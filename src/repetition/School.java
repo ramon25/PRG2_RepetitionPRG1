@@ -1,4 +1,4 @@
-package School;
+package repetition;
 
 
 import java.util.HashMap;
