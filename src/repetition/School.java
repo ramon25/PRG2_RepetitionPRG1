@@ -1,9 +1,9 @@
 package repetition;
 
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+//import java.util.HashMap;
+//import java.util.Iterator;
+//import java.util.Map;
 
 /*
  * To change this template, choose Tools | Templates
@@ -17,7 +17,7 @@ import java.util.Map;
 public class School {
     private String name;
 
-    private HashMap<Integer,Student> studentList = new HashMap<Integer,Student>();
+    //private HashMap<Integer,Student> studentList = new HashMap<Integer,Student>();
     
     public School(String name) {
         this.name= name;
@@ -30,7 +30,7 @@ public class School {
     public void setName(String name) {
         this.name = name;
     }
-    
+    /*
     public void enrolStudent(String name, String firstName, String course) {
         Student myStudent = new Student(name,firstName,course);
         studentList.put(myStudent.getNumber(), myStudent);
@@ -44,13 +44,13 @@ public class School {
             Student myStudent = (Student)myMap.getValue();
             myStudent.print();
         }
-    }
+    }*/
     
     public static void main(String[] args) {
         School hslu = new School("HSLU");
-        hslu.enrolStudent("Rainer","Ramon","IT");
-        hslu.enrolStudent("Müller","Lukas","IT");
+        //hslu.enrolStudent("Rainer","Ramon","IT");
+        //hslu.enrolStudent("Müller","Lukas","IT");
         
-        hslu.printStudents();
+        //hslu.printStudents();
     }
 }
