@@ -40,7 +40,7 @@ public class SchoolTest {
         System.out.println("getName");
         School instance = new School("Test");
        
-        String expResult = "Test";
+        String expResult = "Test2";
         String result = instance.getName();
         assertEquals(expResult, result);
     }
