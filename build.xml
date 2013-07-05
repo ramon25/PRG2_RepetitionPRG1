@@ -56,37 +56,6 @@
     <exclude name="**/?*.clj"/>
   </patternset>
   
-  <!-- JDK definitions -->
-  
-  <property name="jdk.bin.1.7" value="${jdk.home.1.7}/bin"/>
-  <path id="jdk.classpath.1.7">
-    <fileset dir="${jdk.home.1.7}">
-      <include name="jre/lib/charsets.jar"/>
-      <include name="jre/lib/deploy.jar"/>
-      <include name="jre/lib/javaws.jar"/>
-      <include name="jre/lib/jce.jar"/>
-      <include name="jre/lib/jfr.jar"/>
-      <include name="jre/lib/jfxrt.jar"/>
-      <include name="jre/lib/jsse.jar"/>
-      <include name="jre/lib/management-agent.jar"/>
-      <include name="jre/lib/plugin.jar"/>
-      <include name="jre/lib/resources.jar"/>
-      <include name="jre/lib/rt.jar"/>
-      <include name="jre/lib/ext/access-bridge-64.jar"/>
-      <include name="jre/lib/ext/dnsns.jar"/>
-      <include name="jre/lib/ext/jaccess.jar"/>
-      <include name="jre/lib/ext/localedata.jar"/>
-      <include name="jre/lib/ext/sunec.jar"/>
-      <include name="jre/lib/ext/sunjce_provider.jar"/>
-      <include name="jre/lib/ext/sunmscapi.jar"/>
-      <include name="jre/lib/ext/zipfs.jar"/>
-    </fileset>
-  </path>
-  
-  <property name="project.jdk.home" value="${jdk.home.1.7}"/>
-  <property name="project.jdk.bin" value="${jdk.bin.1.7}"/>
-  <property name="project.jdk.classpath" value="jdk.classpath.1.7"/>
-  
   
   <!-- Project Libraries -->
   
@@ -102,9 +71,6 @@
   <dirname property="module.prg2_repetitionprg1.basedir" file="${ant.file}"/>
   
   
-  <property name="module.jdk.home.prg2_repetitionprg1" value="${project.jdk.home}"/>
-  <property name="module.jdk.bin.prg2_repetitionprg1" value="${project.jdk.bin}"/>
-  <property name="module.jdk.classpath.prg2_repetitionprg1" value="${project.jdk.classpath}"/>
   
   <property name="compiler.args.prg2_repetitionprg1" value="${compiler.args}"/>
   
@@ -116,7 +82,6 @@
   </path>
   
   <path id="prg2_repetitionprg1.module.production.classpath">
-    <path refid="${module.jdk.classpath.prg2_repetitionprg1}"/>
     <path refid="library.junit-4.10.classpath"/>
   </path>
   
@@ -126,7 +91,6 @@
   </path>
   
   <path id="prg2_repetitionprg1.module.classpath">
-    <path refid="${module.jdk.classpath.prg2_repetitionprg1}"/>
     <pathelement location="${prg2_repetitionprg1.output.dir}"/>
     <path refid="library.junit-4.10.classpath"/>
   </path>
@@ -163,7 +127,7 @@
   
   <target name="compile.module.prg2_repetitionprg1.production" description="Compile module PRG2_RepetitionPRG1; production classes">
     <mkdir dir="${prg2_repetitionprg1.output.dir}"/>
-    <javac destdir="${prg2_repetitionprg1.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.prg2_repetitionprg1}/javac">
+    <javac destdir="${prg2_repetitionprg1.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true">
       <compilerarg line="${compiler.args.prg2_repetitionprg1}"/>
       <bootclasspath refid="prg2_repetitionprg1.module.bootclasspath"/>
       <classpath refid="prg2_repetitionprg1.module.production.classpath"/>
@@ -181,7 +145,7 @@
   
   <target name="compile.module.prg2_repetitionprg1.tests" depends="compile.module.prg2_repetitionprg1.production" description="compile module PRG2_RepetitionPRG1; test classes" unless="skip.tests">
     <mkdir dir="${prg2_repetitionprg1.testoutput.dir}"/>
-    <javac destdir="${prg2_repetitionprg1.testoutput.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.prg2_repetitionprg1}/javac">
+    <javac destdir="${prg2_repetitionprg1.testoutput.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true">
       <compilerarg line="${compiler.args.prg2_repetitionprg1}"/>
       <bootclasspath refid="prg2_repetitionprg1.module.bootclasspath"/>
       <classpath refid="prg2_repetitionprg1.module.classpath"/>
