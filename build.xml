@@ -93,18 +93,6 @@
   <path id="library.junit-4.10.classpath">
     <pathelement location="${basedir}/junit-4.10.jar"/>
   </path>
-  <!-- Register Custom Compiler Taskdefs -->
-  <property name="javac2.home" value="${idea.home}/lib"/>
-  <path id="javac2.classpath">
-    <pathelement location="${javac2.home}/javac2.jar"/>
-    <pathelement location="${javac2.home}/jdom.jar"/>
-    <pathelement location="${javac2.home}/asm4-all.jar"/>
-    <pathelement location="${javac2.home}/jgoodies-forms.jar"/>
-  </path>
-  <target name="register.custom.compilers">
-    <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="javac2.classpath"/>
-    <taskdef name="instrumentIdeaExtensions" classname="com.intellij.ant.InstrumentIdeaExtensions" classpathref="javac2.classpath"/>
-  </target>
   
   <!-- Modules -->
   
@@ -173,15 +161,15 @@
   
   <target name="compile.module.prg2_repetitionprg1" depends="compile.module.prg2_repetitionprg1.production,compile.module.prg2_repetitionprg1.tests" description="Compile module PRG2_RepetitionPRG1"/>
   
-  <target name="compile.module.prg2_repetitionprg1.production" depends="register.custom.compilers" description="Compile module PRG2_RepetitionPRG1; production classes">
+  <target name="compile.module.prg2_repetitionprg1.production" description="Compile module PRG2_RepetitionPRG1; production classes">
     <mkdir dir="${prg2_repetitionprg1.output.dir}"/>
-    <javac2 destdir="${prg2_repetitionprg1.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.prg2_repetitionprg1}/javac">
+    <javac destdir="${prg2_repetitionprg1.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.prg2_repetitionprg1}/javac">
       <compilerarg line="${compiler.args.prg2_repetitionprg1}"/>
       <bootclasspath refid="prg2_repetitionprg1.module.bootclasspath"/>
       <classpath refid="prg2_repetitionprg1.module.production.classpath"/>
       <src refid="prg2_repetitionprg1.module.sourcepath"/>
       <patternset refid="excluded.from.compilation.prg2_repetitionprg1"/>
-    </javac2>
+    </javac>
     
     <copy todir="${prg2_repetitionprg1.output.dir}">
       <fileset dir="${module.prg2_repetitionprg1.basedir}/src">
@@ -191,15 +179,15 @@
     </copy>
   </target>
   
-  <target name="compile.module.prg2_repetitionprg1.tests" depends="register.custom.compilers,compile.module.prg2_repetitionprg1.production" description="compile module PRG2_RepetitionPRG1; test classes" unless="skip.tests">
+  <target name="compile.module.prg2_repetitionprg1.tests" depends="compile.module.prg2_repetitionprg1.production" description="compile module PRG2_RepetitionPRG1; test classes" unless="skip.tests">
     <mkdir dir="${prg2_repetitionprg1.testoutput.dir}"/>
-    <javac2 destdir="${prg2_repetitionprg1.testoutput.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.prg2_repetitionprg1}/javac">
+    <javac destdir="${prg2_repetitionprg1.testoutput.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.prg2_repetitionprg1}/javac">
       <compilerarg line="${compiler.args.prg2_repetitionprg1}"/>
       <bootclasspath refid="prg2_repetitionprg1.module.bootclasspath"/>
       <classpath refid="prg2_repetitionprg1.module.classpath"/>
       <src refid="prg2_repetitionprg1.module.test.sourcepath"/>
       <patternset refid="excluded.from.compilation.prg2_repetitionprg1"/>
-    </javac2>
+    </javac>
     
     <copy todir="${prg2_repetitionprg1.testoutput.dir}">
       <fileset dir="${module.prg2_repetitionprg1.basedir}/test">
