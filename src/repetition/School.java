@@ -49,6 +49,7 @@ public class School {
         School hslu = new School("HSLU");
         hslu.enrolStudent("Rainer","Ramon","IT");
         hslu.enrolStudent("Mueller","Lukas","IT");
+        hslu.enrolStudent("Huber","Simon","IT");
         hslu.enrolStudent("Nobel","Dominique","Software Systems");
         
         hslu.printStudents();
